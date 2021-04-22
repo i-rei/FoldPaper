@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  </head>
+  <body class="font-sans bg-blue-200">
+    <main >
+      <div class="mx-20 bg-white h-screen shadow-2xl">
+      <h1 class="text-center font-bold text-4xl px-1 py-5">紙を折り続けるとどれくらいになる?</h1>
+        <div
+          id="explain"
+          class="m-10">
+           このサイトでは、紙を折り続けたらどれぐらいの高さ（厚み）になるのかを計算できるよ。
+           <br>
+           <br>
+           このサイトでいう「紙」とは、厚さ<strong>0.09mm</strong>のコピー用紙のこと。
+           <br>
+           <br>
+           紙を何回折ったら富士山の高さになるのか？
+           <br>
+           紙を何回折ったら月まで届くのか？
+           <br>
+           <br>
+           今すぐ確かめてみよう！
+        </div>
+          <div id="paper-count">
+            <form action="#">
+              <div class="w-2/3 mx-auto p-1 pr-0 flex items-center">
+                <input 
+                   id="paper"
+                   type="text" 
+                   placeholder="紙を何回折るかおしえてね！" 
+                   class="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"
+                   required>
+                <button 
+                   type="submit" 
+                   class="bg-blue-500 text-white text-base font-semibold tracking-wide p-3 rounded shadow hover:bg-blue-700"
+                   onclick="paperCount()">
+                  送信
+                </button>
+              </div>
+            </form>
+          </div>
+     </div>
+    </main>
+    <script>
+      function paperCount() {
+        const PAPER_MM = 0.09;
+        const PAPER_CM = 0.009;
+        const PAPER_M = 0.0009;
+        const PAPER_KM= 0.0000009;
+
+        let CmRresult;
+        let MResult;
+        let KmResult;
+
+        const element = document.getElementById("paper").value;
+        const pow     = Math.pow(2,element);
+
+        //エラー処理と、０（おらない）処理
+        if (element.charAt(0) === "0") {
+          swal({
+            title:"計算結果",
+            text:`紙を${element}回折った結果\n${PAPER_M}m\n${PAPER_CM}cm\n${PAPER_KM}km`,
+          icon:"success",
+          });
+          return 0;
+        }
+        if (element.match(/[^1-9]+/)) {
+          swal({
+            title:"エラー",
+            text:"エラーが発生したよ。１以上の、整数をおしえてね！",
+            icon: "error"
+          })
+          return false;
+        }
+          MResult = PAPER_M * pow;
+        CmRresult = PAPER_CM * pow;
+        KmResult = PAPER_KM * pow;
+
+        swal({
+          title:"計算結果",
+          text:`紙を${element}回折ると...\n\n${MResult}m\n${CmRresult}cm\n${KmResult}km`,
+          icon:"success",
+        });
+      } 
+    </script>
+  </body>
+</html>
+
