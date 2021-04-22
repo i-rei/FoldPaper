@@ -11,42 +11,42 @@
   <body class="font-sans md:bg-blue-200">
     <main>
       <div class="md:mx-20 m-0 bg-white h-screen md:shadow-2xl">
-      <h1 class="text-center font-bold text-4xl px-1 py-5">紙を折り続けるとどうなる?</h1>
+        <h1 class="text-center font-bold text-4xl px-1 py-5">紙を折り続けるとどうなる?</h1>
         <div
           id="explain"
           class="m-10">
-           このサイトでは、紙を折り続けたらどれぐらいの高さ（厚み）になるのかを計算できるよ。
-           <br>
-           <br>
-           このサイトでいう「紙」とは、厚さ<strong>0.09mm</strong>のコピー用紙のこと。
-           <br>
-           <br>
-           紙を何回折ったら富士山の高さになるのか？
-           <br>
-           紙を何回折ったら月まで届くのか？
-           <br>
-           <br>
-           今すぐ確かめてみよう！
+          このサイトでは、紙を折り続けたらどれぐらいの高さ（厚み）になるのかを計算できるよ。
+          <br>
+          <br>
+          このサイトでいう「紙」とは、厚さ<strong>0.09mm</strong>のコピー用紙のこと。
+          <br>
+          <br>
+          紙を何回折ったら富士山の高さになるのか？
+          <br>
+          紙を何回折ったら月まで届くのか？
+          <br>
+          <br>
+          今すぐ確かめてみよう！
         </div>
-          <div id="paper-count">
-            <form>
-              <div class="w-2/3 mx-auto p-1 pr-0 flex items-center">
-                <input 
-                   id="paper"
-                   type="text" 
-                   placeholder="紙を何回折るかおしえてね！" 
-                   class="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"
-                   required>
-                <button 
-                   type="submit" 
-                   class="bg-blue-500 text-white text-base font-semibold tracking-wide p-3 rounded shadow hover:bg-blue-700"
-                   onclick="paperCount()">
-                  送信
-                </button>
-              </div>
-            </form>
-          </div>
-     </div>
+        <div id="paper-count">
+          <form action="#">
+            <div class="w-2/3 mx-auto p-1 pr-0 flex items-center">
+              <input 
+                 id="paper"
+                 type="text" 
+                 placeholder="紙を何回折るかおしえてね！" 
+                 class="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"
+                 required>
+              <button 
+                 type="submit" 
+                 class="bg-blue-500 text-white text-base font-semibold tracking-wide p-3 rounded shadow hover:bg-blue-700"
+                 onclick="paperCount()">
+                送信
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <script>
       function paperCount() {
@@ -66,12 +66,12 @@
         if (element.charAt(0) === "0") {
           swal({
             title:"計算結果",
-            text:`紙を${element}回折った結果\n${PAPER_M}m\n${PAPER_CM}cm\n${PAPER_KM}km`,
-          icon:"success",
+            text:`紙を${element}回折った結果\n${PAPER_M}m\n${PAPER_CM}cm`,
+            icon:"success",
           });
           return 0;
         }
-        if (!(element.match(/[1-9][0-9]*/))) {
+        if (!(element.match(/^[0-9]+$/))) {
           swal({
             title:"エラー",
             text:"エラーが発生したよ。１以上の、整数をおしえてね！",
@@ -79,7 +79,7 @@
           })
           return false;
         }
-          MResult = PAPER_M * pow;
+        MResult = PAPER_M * pow;
         CmRresult = PAPER_CM * pow;
         KmResult = PAPER_KM * pow;
 
