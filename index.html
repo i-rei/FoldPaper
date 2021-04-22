@@ -70,7 +70,7 @@
           });
           return 0;
         }
-        if (element.match(/[^1-9]+/)) {
+        if (!(element.match(/[1-9][0-9]*/))) {
           swal({
             title:"エラー",
             text:"エラーが発生したよ。１以上の、整数をおしえてね！",
